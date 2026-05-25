@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comprar Bilhete — Casa da Música</title>
+  <link rel="stylesheet" href="checkout.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Casa da Música</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Eventos</a>
+        <a href="conta.html" class="nav-link">A minha conta</a>
+        <a href="login.html" class="btn btn-outline">Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="breadcrumb">
+      <a href="index.html">Eventos</a>
+      <span>/</span>
+      <a href="evento.html">Orquestra Sinfónica do Porto</a>
+      <span>/</span>
+      <span>Comprar Bilhete</span>
+    </div>
+
+    <div class="checkout-layout">
+      <!-- Steps + Form -->
+      <div class="checkout-left">
+
+        <!-- Progress -->
+        <div class="steps">
+          <div class="step active">
+            <span class="step-num">1</span>
+            <span class="step-label">Bilhetes</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step">
+            <span class="step-num">2</span>
+            <span class="step-label">Dados</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step">
+            <span class="step-num">3</span>
+            <span class="step-label">Pagamento</span>
+          </div>
+        </div>
+
+        <!-- Step 1: Ticket selection -->
+        <section class="form-section" id="step-tickets">
+          <h2 class="form-section-title">Selecionar Bilhetes</h2>
+
+          <div class="ticket-selector">
+            <div class="ticket-option">
+              <div class="ticket-info">
+                <span class="ticket-type">Normal</span>
+                <span class="ticket-desc">Bilhete standard</span>
+              </div>
+              <div class="ticket-controls">
+                <span class="ticket-price">€20,00</span>
+                <div class="qty-control">
+                  <button class="qty-btn" onclick="changeQty('normal',-1)">−</button>
+                  <span class="qty-val" id="qty-normal">0</span>
+                  <button class="qty-btn" onclick="changeQty('normal',1)">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="ticket-option">
+              <div class="ticket-info">
+                <span class="ticket-type">Jovem</span>
+                <span class="ticket-desc">Até 30 anos — documento identificativo obrigatório</span>
+              </div>
+              <div class="ticket-controls">
+                <span class="ticket-price">€12,00</span>
+                <div class="qty-control">
+                  <button class="qty-btn" onclick="changeQty('jovem',-1)">−</button>
+                  <span class="qty-val" id="qty-jovem">0</span>
+                  <button class="qty-btn" onclick="changeQty('jovem',1)">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="ticket-option">
+              <div class="ticket-info">
+                <span class="ticket-type">Sénior</span>
+                <span class="ticket-desc">65 ou mais anos — documento identificativo obrigatório</span>
+              </div>
+              <div class="ticket-controls">
+                <span class="ticket-price">€14,00</span>
+                <div class="qty-control">
+                  <button class="qty-btn" onclick="changeQty('senior',-1)">−</button>
+                  <span class="qty-val" id="qty-senior">0</span>
+                  <button class="qty-btn" onclick="changeQty('senior',1)">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 2: Personal data -->
+        <section class="form-section">
+          <h2 class="form-section-title">Dados Pessoais</h2>
+          <form class="personal-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" placeholder="Ana Ferreira" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="ana@exemplo.com" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" placeholder="+351 912 345 678" />
+              </div>
+              <div class="form-group">
+                <label for="nif">NIF (opcional)</label>
+                <input type="text" id="nif" placeholder="123456789" maxlength="9" />
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <!-- Step 3: Payment -->
+        <section class="form-section">
+          <h2 class="form-section-title">Pagamento</h2>
+          <div class="payment-methods">
+            <label class="payment-opt selected">
+              <input type="radio" name="payment" value="card" checked />
+              <span class="payment-icon">&#128179;</span>
+              <span>Cartão de Crédito / Débito</span>
+            </label>
+            <label class="payment-opt">
+              <input type="radio" name="payment" value="mbway" />
+              <span class="payment-icon">&#128247;</span>
+              <span>MB WAY</span>
+            </label>
+            <label class="payment-opt">
+              <input type="radio" name="payment" value="multibanco" />
+              <span class="payment-icon">&#127974;</span>
+              <span>Multibanco</span>
+            </label>
+          </div>
+
+          <div class="card-form">
+            <div class="form-group">
+              <label>Número do cartão</label>
+              <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Validade</label>
+                <input type="text" placeholder="MM/AA" maxlength="5" />
+              </div>
+              <div class="form-group">
+                <label>CVV</label>
+                <input type="text" placeholder="123" maxlength="4" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Nome no cartão</label>
+              <input type="text" placeholder="ANA FERREIRA" />
+            </div>
+          </div>
+        </section>
+
+        <a href="confirmacao.html" class="btn btn-primary btn-full btn-lg">Confirmar e Pagar</a>
+      </div>
+
+      <!-- Order Summary -->
+      <aside class="checkout-sidebar">
+        <div class="summary-card">
+          <h3 class="summary-title">Resumo da compra</h3>
+
+          <div class="summary-event">
+            <div class="summary-cover"></div>
+            <div>
+              <p class="summary-event-name">Orquestra Sinfónica do Porto</p>
+              <p class="summary-event-date">Sáb, 7 Jun 2026 · 21:00</p>
+              <p class="summary-event-local">Sala Suggia, Porto</p>
+            </div>
+          </div>
+
+          <div class="summary-lines" id="summary-lines">
+            <p class="summary-empty">Ainda não selecionou bilhetes.</p>
+          </div>
+
+          <div class="summary-total">
+            <span>Total</span>
+            <span id="total-price">€0,00</span>
+          </div>
+
+          <p class="summary-note">IVA incluído. Bilhete enviado por email após pagamento.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Casa da Música. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const prices = { normal: 20, jovem: 12, senior: 14 };
+    const labels = { normal: 'Normal', jovem: 'Jovem', senior: 'Sénior' };
+    const qtys = { normal: 0, jovem: 0, senior: 0 };
+
+    function changeQty(type, delta) {
+      qtys[type] = Math.max(0, qtys[type] + delta);
+      document.getElementById('qty-' + type).textContent = qtys[type];
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const lines = document.getElementById('summary-lines');
+      const totalEl = document.getElementById('total-price');
+      let total = 0;
+      let html = '';
+      for (const [type, qty] of Object.entries(qtys)) {
+        if (qty > 0) {
+          const sub = qty * prices[type];
+          total += sub;
+          html += `<div class="summary-line"><span>${labels[type]} × ${qty}</span><span>€${sub.toFixed(2).replace('.',',')}</span></div>`;
+        }
+      }
+      lines.innerHTML = html || '<p class="summary-empty">Ainda não selecionou bilhetes.</p>';
+      totalEl.textContent = '€' + total.toFixed(2).replace('.', ',');
+    }
+  </script>
+</body>
+</html>

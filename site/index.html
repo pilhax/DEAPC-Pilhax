@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa da Música — Bilheteira Online</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Casa da Música</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Eventos</a>
+        <a href="conta.html" class="nav-link">A minha conta</a>
+        <a href="login.html" class="btn btn-outline">Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <h1 class="hero-title">Bilheteira Online</h1>
+      <p class="hero-sub">Descubra e reserve os seus concertos favoritos</p>
+    </section>
+
+    <section class="search-bar-section">
+      <form class="search-form" action="#">
+        <input class="search-input" type="text" placeholder="Pesquisar eventos..." />
+        <select class="search-select">
+          <option value="">Todas as categorias</option>
+          <option>Música Clássica</option>
+          <option>Jazz</option>
+          <option>Música Contemporânea</option>
+          <option>Ópera</option>
+          <option>Música de Câmara</option>
+          <option>World Music</option>
+        </select>
+        <input class="search-date" type="date" />
+        <button class="btn btn-primary" type="submit">Pesquisar</button>
+      </form>
+    </section>
+
+    <section class="events-section">
+      <h2 class="section-title">Próximos Eventos</h2>
+      <div class="events-grid">
+
+        <article class="event-card">
+          <div class="event-img" style="background-color:#1e2a4a;"></div>
+          <div class="event-body">
+            <span class="event-category">Música Clássica</span>
+            <h3 class="event-title">Orquestra Sinfónica do Porto</h3>
+            <p class="event-meta">
+              <span class="event-date">Sáb, 7 Jun 2026</span>
+              <span class="event-time">21:00</span>
+            </p>
+            <p class="event-price">A partir de <strong>€12</strong></p>
+            <a href="evento.html" class="btn btn-primary btn-sm">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-img" style="background-color:#2a1e4a;"></div>
+          <div class="event-body">
+            <span class="event-category">Jazz</span>
+            <h3 class="event-title">Noite de Jazz com Maria João</h3>
+            <p class="event-meta">
+              <span class="event-date">Sex, 13 Jun 2026</span>
+              <span class="event-time">22:00</span>
+            </p>
+            <p class="event-price">A partir de <strong>€15</strong></p>
+            <a href="evento.html" class="btn btn-primary btn-sm">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-img" style="background-color:#1e4a2a;"></div>
+          <div class="event-body">
+            <span class="event-category">Ópera</span>
+            <h3 class="event-title">La Traviata — Verdi</h3>
+            <p class="event-meta">
+              <span class="event-date">Dom, 15 Jun 2026</span>
+              <span class="event-time">19:30</span>
+            </p>
+            <p class="event-price">A partir de <strong>€20</strong></p>
+            <a href="evento.html" class="btn btn-primary btn-sm">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-img" style="background-color:#4a2a1e;"></div>
+          <div class="event-body">
+            <span class="event-category">Música de Câmara</span>
+            <h3 class="event-title">Quarteto de Cordas Nº 14</h3>
+            <p class="event-meta">
+              <span class="event-date">Qui, 19 Jun 2026</span>
+              <span class="event-time">20:00</span>
+            </p>
+            <p class="event-price">A partir de <strong>€10</strong></p>
+            <a href="evento.html" class="btn btn-primary btn-sm">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-img" style="background-color:#3a1e4a;"></div>
+          <div class="event-body">
+            <span class="event-category">Música Contemporânea</span>
+            <h3 class="event-title">Festival de Música Nova</h3>
+            <p class="event-meta">
+              <span class="event-date">Sáb, 21 Jun 2026</span>
+              <span class="event-time">21:30</span>
+            </p>
+            <p class="event-price">A partir de <strong>€8</strong></p>
+            <a href="evento.html" class="btn btn-primary btn-sm">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-img" style="background-color:#1e4a3a;"></div>
+          <div class="event-body">
+            <span class="event-category">World Music</span>
+            <h3 class="event-title">Fado e Guitarra Portuguesa</h3>
+            <p class="event-meta">
+              <span class="event-date">Sex, 27 Jun 2026</span>
+              <span class="event-time">21:00</span>
+            </p>
+            <p class="event-price">A partir de <strong>€14</strong></p>
+            <a href="evento.html" class="btn btn-primary btn-sm">Ver detalhes</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Casa da Música. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

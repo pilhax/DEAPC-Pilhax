@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestão de Utilizadores — Casa da Música</title>
+  <link rel="stylesheet" href="admin-utilizadores.css" />
+</head>
+<body>
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo">Casa da Música</span>
+        <span class="role-tag">Admin</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="admin-dashboard.html" class="nav-item">
+          <span class="nav-icon">&#9632;</span> Dashboard
+        </a>
+        <a href="admin-eventos.html" class="nav-item">
+          <span class="nav-icon">&#127915;</span> Eventos
+        </a>
+        <a href="admin-utilizadores.html" class="nav-item active">
+          <span class="nav-icon">&#128101;</span> Utilizadores
+        </a>
+        <a href="vendedor.html" class="nav-item">
+          <span class="nav-icon">&#128179;</span> Balcão
+        </a>
+        <a href="index.html" class="nav-item nav-item-muted">
+          <span class="nav-icon">&#10548;</span> Ver site
+        </a>
+        <a href="login.html" class="nav-item nav-item-danger">
+          <span class="nav-icon">&#10005;</span> Sair
+        </a>
+      </nav>
+    </aside>
+
+    <div class="page">
+      <header class="topbar">
+        <h1 class="page-title">Utilizadores</h1>
+        <div class="topbar-right">
+          <div class="admin-avatar">PS</div>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <!-- Stats -->
+        <div class="stats-row">
+          <div class="stat-pill">
+            <span class="stat-val">1.284</span>
+            <span class="stat-label">Total</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-val">1.240</span>
+            <span class="stat-label">Clientes</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-val">38</span>
+            <span class="stat-label">Vendedores</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-val">6</span>
+            <span class="stat-label">Administradores</span>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-row">
+          <input class="search-input" type="text" placeholder="&#128269; Pesquisar por nome ou email..." />
+          <select class="filter-select">
+            <option value="">Todos os perfis</option>
+            <option>Cliente</option>
+            <option>Vendedor</option>
+            <option>Administrador</option>
+          </select>
+          <select class="filter-select">
+            <option value="">Todos os estados</option>
+            <option>Ativo</option>
+            <option>Suspenso</option>
+          </select>
+        </div>
+
+        <!-- Table -->
+        <div class="card">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Utilizador</th>
+                  <th>Perfil</th>
+                  <th>Registo</th>
+                  <th>Último acesso</th>
+                  <th>Bilhetes</th>
+                  <th>Gasto total</th>
+                  <th>Estado</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="user-avatar" style="background:#c0392b;">AF</div>
+                      <div>
+                        <p class="user-name">Ana Ferreira</p>
+                        <p class="user-email">ana@exemplo.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="role-badge cliente">Cliente</span></td>
+                  <td>12 Jan 2025</td>
+                  <td>25 Mai 2026</td>
+                  <td>8</td>
+                  <td>€112,00</td>
+                  <td><span class="status active">Ativo</span></td>
+                  <td class="actions-cell">
+                    <button class="icon-btn" title="Ver detalhes">&#128065;</button>
+                    <button class="icon-btn icon-btn-warn" title="Suspender">&#128683;</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="user-avatar" style="background:#1a6a3e;">CM</div>
+                      <div>
+                        <p class="user-name">Carlos Mota</p>
+                        <p class="user-email">carlos.mota@gmail.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="role-badge cliente">Cliente</span></td>
+                  <td>3 Mar 2025</td>
+                  <td>24 Mai 2026</td>
+                  <td>3</td>
+                  <td>€54,00</td>
+                  <td><span class="status active">Ativo</span></td>
+                  <td class="actions-cell">
+                    <button class="icon-btn" title="Ver detalhes">&#128065;</button>
+                    <button class="icon-btn icon-btn-warn" title="Suspender">&#128683;</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="user-avatar" style="background:#2471a3;">JR</div>
+                      <div>
+                        <p class="user-name">João Rodrigues</p>
+                        <p class="user-email">joao.r@cdmusica.pt</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="role-badge vendedor">Vendedor</span></td>
+                  <td>15 Set 2024</td>
+                  <td>25 Mai 2026</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="status active">Ativo</span></td>
+                  <td class="actions-cell">
+                    <button class="icon-btn" title="Ver detalhes">&#128065;</button>
+                    <button class="icon-btn icon-btn-warn" title="Suspender">&#128683;</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="user-avatar" style="background:#7d3c98;">PS</div>
+                      <div>
+                        <p class="user-name">Paulo Silva</p>
+                        <p class="user-email">paulo.silva@cdmusica.pt</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="role-badge admin">Admin</span></td>
+                  <td>1 Jan 2023</td>
+                  <td>25 Mai 2026</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="status active">Ativo</span></td>
+                  <td class="actions-cell">
+                    <button class="icon-btn" title="Ver detalhes">&#128065;</button>
+                    <button class="icon-btn" disabled title="Não pode suspender administradores">&#128683;</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="user-avatar" style="background:#555;">RO</div>
+                      <div>
+                        <p class="user-name">Rita Oliveira</p>
+                        <p class="user-email">rita.o@hotmail.com</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="role-badge cliente">Cliente</span></td>
+                  <td>20 Fev 2025</td>
+                  <td>10 Abr 2026</td>
+                  <td>1</td>
+                  <td>€10,00</td>
+                  <td><span class="status suspended">Suspenso</span></td>
+                  <td class="actions-cell">
+                    <button class="icon-btn" title="Ver detalhes">&#128065;</button>
+                    <button class="icon-btn icon-btn-ok" title="Reativar">&#10003;</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <button class="page-btn" disabled>&#8592; Anterior</button>
+            <span class="page-info">Página <strong>1</strong> de 26</span>
+            <button class="page-btn">Próxima &#8594;</button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</body>
+</html>

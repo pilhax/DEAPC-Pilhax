@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balcão de Venda — Casa da Música</title>
+  <link rel="stylesheet" href="vendedor.css" />
+</head>
+<body>
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo">Casa da Música</span>
+        <span class="role-tag">Balcão</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="vendedor.html" class="nav-item active">
+          <span class="nav-icon">&#128179;</span> Vender Bilhete
+        </a>
+        <a href="admin-dashboard.html" class="nav-item">
+          <span class="nav-icon">&#9632;</span> Administração
+        </a>
+        <a href="login.html" class="nav-item nav-item-danger">
+          <span class="nav-icon">&#10005;</span> Sair
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="vendor-card">
+          <div class="vendor-avatar">JR</div>
+          <div>
+            <p class="vendor-name">João Rodrigues</p>
+            <p class="vendor-role">Vendedor · Balcão 2</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="page">
+      <header class="topbar">
+        <h1 class="page-title">Venda Presencial</h1>
+        <div class="topbar-right">
+          <span class="live-badge">&#9679; Em serviço</span>
+          <span class="topbar-time" id="clock">--:--:--</span>
+        </div>
+      </header>
+
+      <main class="content">
+        <div class="pos-layout">
+
+          <!-- Left: Event + ticket selection -->
+          <div class="pos-left">
+
+            <!-- Event search -->
+            <section class="pos-card">
+              <h2 class="card-title">1. Selecionar Evento</h2>
+              <div class="event-search-row">
+                <input class="search-input" type="text" placeholder="&#128269; Pesquisar evento ou data..." />
+                <select class="filter-select">
+                  <option>Hoje (25 Mai 2026)</option>
+                  <option>Esta semana</option>
+                  <option>Este mês</option>
+                  <option>Todos</option>
+                </select>
+              </div>
+
+              <div class="event-picker">
+                <label class="event-opt selected">
+                  <input type="radio" name="event" value="osp" checked />
+                  <div class="opt-body">
+                    <div class="opt-cover" style="background:#1e2a4a;"></div>
+                    <div class="opt-info">
+                      <p class="opt-name">Orquestra Sinfónica do Porto</p>
+                      <p class="opt-meta">7 Jun 2026 · 21:00 · Sala Suggia</p>
+                      <p class="opt-avail">
+                        <span class="dot green"></span> 142 lugares disponíveis
+                      </p>
+                    </div>
+                    <span class="opt-price">€12–€20</span>
+                  </div>
+                </label>
+
+                <label class="event-opt">
+                  <input type="radio" name="event" value="jazz" />
+                  <div class="opt-body">
+                    <div class="opt-cover" style="background:#2a1e4a;"></div>
+                    <div class="opt-info">
+                      <p class="opt-name">Noite de Jazz com Maria João</p>
+                      <p class="opt-meta">13 Jun 2026 · 22:00 · Grande Auditório</p>
+                      <p class="opt-avail">
+                        <span class="dot yellow"></span> 38 lugares disponíveis
+                      </p>
+                    </div>
+                    <span class="opt-price">€15</span>
+                  </div>
+                </label>
+
+                <label class="event-opt">
+                  <input type="radio" name="event" value="traviata" />
+                  <div class="opt-body">
+                    <div class="opt-cover" style="background:#1e4a2a;"></div>
+                    <div class="opt-info">
+                      <p class="opt-name">La Traviata — Verdi</p>
+                      <p class="opt-meta">15 Jun 2026 · 19:30 · Sala Suggia</p>
+                      <p class="opt-avail">
+                        <span class="dot green"></span> 214 lugares disponíveis
+                      </p>
+                    </div>
+                    <span class="opt-price">€18–€30</span>
+                  </div>
+                </label>
+              </div>
+            </section>
+
+            <!-- Ticket type -->
+            <section class="pos-card">
+              <h2 class="card-title">2. Tipo e Quantidade</h2>
+              <div class="ticket-grid">
+
+                <div class="tkt-btn" onclick="setTicket('normal')">
+                  <span class="tkt-type">Normal</span>
+                  <span class="tkt-price">€20,00</span>
+                  <div class="tkt-qty-row">
+                    <button class="qty-btn" onclick="event.stopPropagation();changeQty('normal',-1)">−</button>
+                    <span class="qty-val" id="q-normal">0</span>
+                    <button class="qty-btn" onclick="event.stopPropagation();changeQty('normal',1)">+</button>
+                  </div>
+                </div>
+
+                <div class="tkt-btn" onclick="setTicket('jovem')">
+                  <span class="tkt-type">Jovem</span>
+                  <span class="tkt-note">até 30 anos</span>
+                  <span class="tkt-price">€12,00</span>
+                  <div class="tkt-qty-row">
+                    <button class="qty-btn" onclick="event.stopPropagation();changeQty('jovem',-1)">−</button>
+                    <span class="qty-val" id="q-jovem">0</span>
+                    <button class="qty-btn" onclick="event.stopPropagation();changeQty('jovem',1)">+</button>
+                  </div>
+                </div>
+
+                <div class="tkt-btn" onclick="setTicket('senior')">
+                  <span class="tkt-type">Sénior</span>
+                  <span class="tkt-note">+65 anos</span>
+                  <span class="tkt-price">€14,00</span>
+                  <div class="tkt-qty-row">
+                    <button class="qty-btn" onclick="event.stopPropagation();changeQty('senior',-1)">−</button>
+                    <span class="qty-val" id="q-senior">0</span>
+                    <button class="qty-btn" onclick="event.stopPropagation();changeQty('senior',1)">+</button>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- Payment method -->
+            <section class="pos-card">
+              <h2 class="card-title">3. Pagamento</h2>
+              <div class="payment-btns">
+                <label class="pay-btn selected">
+                  <input type="radio" name="pay" value="dinheiro" checked />
+                  <span class="pay-icon">&#128181;</span>
+                  <span>Dinheiro</span>
+                </label>
+                <label class="pay-btn">
+                  <input type="radio" name="pay" value="multibanco" />
+                  <span class="pay-icon">&#127974;</span>
+                  <span>Multibanco</span>
+                </label>
+                <label class="pay-btn">
+                  <input type="radio" name="pay" value="mbway" />
+                  <span class="pay-icon">&#128247;</span>
+                  <span>MB WAY</span>
+                </label>
+                <label class="pay-btn">
+                  <input type="radio" name="pay" value="cartao" />
+                  <span class="pay-icon">&#128179;</span>
+                  <span>Cartão</span>
+                </label>
+              </div>
+
+              <!-- Cash change calculator (shown when Dinheiro selected) -->
+              <div class="change-calc" id="change-calc">
+                <div class="change-row">
+                  <label>Valor recebido (€)</label>
+                  <input type="number" id="cash-received" placeholder="0,00" oninput="calcChange()" min="0" step="0.50" />
+                </div>
+                <div class="change-result">
+                  Troco: <strong id="change-val">€0,00</strong>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Right: Order summary + actions -->
+          <aside class="pos-right">
+            <div class="order-card">
+              <h2 class="order-title">Resumo da Venda</h2>
+
+              <div class="order-event">
+                <p class="order-event-name" id="order-event-name">Orquestra Sinfónica do Porto</p>
+                <p class="order-event-date">7 Jun 2026 · 21:00</p>
+              </div>
+
+              <div class="order-lines" id="order-lines">
+                <p class="order-empty">Nenhum bilhete selecionado.</p>
+              </div>
+
+              <div class="order-total">
+                <span>Total</span>
+                <span id="order-total">€0,00</span>
+              </div>
+
+              <button class="btn btn-primary btn-full btn-xl" onclick="processPayment()">
+                &#128179; Processar Pagamento
+              </button>
+
+              <button class="btn btn-ghost btn-full" onclick="printTicket()">
+                &#128424; Imprimir Bilhete
+              </button>
+
+              <button class="btn btn-danger btn-full" onclick="clearOrder()">
+                &#10006; Limpar
+              </button>
+            </div>
+
+            <!-- Recent sales log -->
+            <div class="sales-log">
+              <h3 class="log-title">Últimas vendas do turno</h3>
+              <ul class="log-list">
+                <li class="log-item">
+                  <span class="log-time">20:47</span>
+                  <span class="log-desc">Normal × 2 — Orquestra Sinfónica</span>
+                  <span class="log-amount">€40</span>
+                </li>
+                <li class="log-item">
+                  <span class="log-time">20:31</span>
+                  <span class="log-desc">Sénior × 1 — La Traviata</span>
+                  <span class="log-amount">€18</span>
+                </li>
+                <li class="log-item">
+                  <span class="log-time">20:12</span>
+                  <span class="log-desc">Jovem × 3 — Festival Música Nova</span>
+                  <span class="log-amount">€24</span>
+                </li>
+              </ul>
+            </div>
+          </aside>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Clock
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock').textContent = now.toLocaleTimeString('pt-PT');
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // Quantities
+    const prices = { normal: 20, jovem: 12, senior: 14 };
+    const labels = { normal: 'Normal', jovem: 'Jovem', senior: 'Sénior' };
+    const qtys   = { normal: 0, jovem: 0, senior: 0 };
+
+    function changeQty(type, delta) {
+      qtys[type] = Math.max(0, qtys[type] + delta);
+      document.getElementById('q-' + type).textContent = qtys[type];
+      updateOrder();
+    }
+
+    function setTicket() {}
+
+    function updateOrder() {
+      const linesEl = document.getElementById('order-lines');
+      const totalEl = document.getElementById('order-total');
+      let total = 0;
+      let html = '';
+      for (const [t, q] of Object.entries(qtys)) {
+        if (q > 0) {
+          const sub = q * prices[t];
+          total += sub;
+          html += `<div class="order-line"><span>${labels[t]} × ${q}</span><span>€${sub.toFixed(2).replace('.',',')}</span></div>`;
+        }
+      }
+      linesEl.innerHTML = html || '<p class="order-empty">Nenhum bilhete selecionado.</p>';
+      totalEl.textContent = '€' + total.toFixed(2).replace('.', ',');
+      calcChange();
+    }
+
+    function calcChange() {
+      const received = parseFloat(document.getElementById('cash-received').value) || 0;
+      const total = Object.entries(qtys).reduce((s, [t, q]) => s + q * prices[t], 0);
+      const change = received - total;
+      document.getElementById('change-val').textContent = '€' + Math.max(0, change).toFixed(2).replace('.', ',');
+    }
+
+    function processPayment() {
+      const total = Object.entries(qtys).reduce((s, [t, q]) => s + q * prices[t], 0);
+      if (total === 0) { alert('Selecione pelo menos um bilhete.'); return; }
+      alert('Pagamento processado com sucesso!\nBilhete pronto para impressão.');
+      clearOrder();
+    }
+
+    function printTicket() {
+      alert('A enviar para impressora...');
+    }
+
+    function clearOrder() {
+      Object.keys(qtys).forEach(k => {
+        qtys[k] = 0;
+        document.getElementById('q-' + k).textContent = 0;
+      });
+      document.getElementById('cash-received').value = '';
+      updateOrder();
+    }
+
+    // Payment method toggle
+    document.querySelectorAll('.pay-btn input').forEach(radio => {
+      radio.addEventListener('change', () => {
+        document.querySelectorAll('.pay-btn').forEach(b => b.classList.remove('selected'));
+        radio.closest('.pay-btn').classList.add('selected');
+        document.getElementById('change-calc').style.display = radio.value === 'dinheiro' ? 'flex' : 'none';
+      });
+    });
+
+    // Event selection highlight
+    document.querySelectorAll('.event-opt input').forEach(radio => {
+      radio.addEventListener('change', () => {
+        document.querySelectorAll('.event-opt').forEach(o => o.classList.remove('selected'));
+        radio.closest('.event-opt').classList.add('selected');
+      });
+    });
+  </script>
+</body>
+</html>

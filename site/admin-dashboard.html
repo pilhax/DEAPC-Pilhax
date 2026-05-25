@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Administração — Casa da Música</title>
+  <link rel="stylesheet" href="admin-dashboard.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo">Casa da Música</span>
+        <span class="role-tag">Admin</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="admin-dashboard.html" class="nav-item active">
+          <span class="nav-icon">&#9632;</span> Dashboard
+        </a>
+        <a href="admin-eventos.html" class="nav-item">
+          <span class="nav-icon">&#127915;</span> Eventos
+        </a>
+        <a href="admin-utilizadores.html" class="nav-item">
+          <span class="nav-icon">&#128101;</span> Utilizadores
+        </a>
+        <a href="vendedor.html" class="nav-item">
+          <span class="nav-icon">&#128179;</span> Balcão
+        </a>
+        <a href="index.html" class="nav-item nav-item-muted">
+          <span class="nav-icon">&#10548;</span> Ver site
+        </a>
+        <a href="login.html" class="nav-item nav-item-danger">
+          <span class="nav-icon">&#10005;</span> Sair
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <div class="page">
+      <header class="topbar">
+        <h1 class="page-title">Dashboard</h1>
+        <div class="topbar-right">
+          <span class="admin-name">Paulo Silva</span>
+          <div class="admin-avatar">PS</div>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Receita total (2026)</span>
+            <span class="kpi-value">€48.320</span>
+            <span class="kpi-delta positive">&#9650; +12% vs 2025</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Bilhetes vendidos</span>
+            <span class="kpi-value">2.418</span>
+            <span class="kpi-delta positive">&#9650; +8%</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Eventos ativos</span>
+            <span class="kpi-value">14</span>
+            <span class="kpi-delta neutral">— igual a mês passado</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Taxa de ocupação</span>
+            <span class="kpi-value">76%</span>
+            <span class="kpi-delta positive">&#9650; +5 p.p.</span>
+          </div>
+        </div>
+
+        <!-- Chart + upcoming -->
+        <div class="mid-grid">
+          <section class="card chart-card">
+            <div class="card-header">
+              <h2 class="card-title">Vendas por mês</h2>
+              <select class="compact-select">
+                <option>2026</option>
+                <option>2025</option>
+              </select>
+            </div>
+            <div class="chart-area">
+              <div class="bar-chart">
+                <div class="bar-group">
+                  <div class="bar" style="height:60%"><span class="bar-tip">€4.2k</span></div>
+                  <span class="bar-label">Jan</span>
+                </div>
+                <div class="bar-group">
+                  <div class="bar" style="height:75%"><span class="bar-tip">€5.1k</span></div>
+                  <span class="bar-label">Fev</span>
+                </div>
+                <div class="bar-group">
+                  <div class="bar" style="height:50%"><span class="bar-tip">€3.8k</span></div>
+                  <span class="bar-label">Mar</span>
+                </div>
+                <div class="bar-group">
+                  <div class="bar" style="height:85%"><span class="bar-tip">€6.0k</span></div>
+                  <span class="bar-label">Abr</span>
+                </div>
+                <div class="bar-group">
+                  <div class="bar" style="height:100%"><span class="bar-tip">€7.2k</span></div>
+                  <span class="bar-label">Mai</span>
+                </div>
+                <div class="bar-group upcoming-bar">
+                  <div class="bar bar-future" style="height:70%"><span class="bar-tip">€5.0k</span></div>
+                  <span class="bar-label">Jun</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <h2 class="card-title">Próximos eventos</h2>
+              <a href="admin-eventos.html" class="card-link">Ver todos</a>
+            </div>
+            <ul class="upcoming-list">
+              <li class="upcoming-item">
+                <div class="upc-date">
+                  <span class="upc-day">07</span>
+                  <span class="upc-mon">Jun</span>
+                </div>
+                <div class="upc-info">
+                  <p class="upc-name">Orquestra Sinfónica do Porto</p>
+                  <p class="upc-meta">142 lugares disponíveis · €20–€12</p>
+                </div>
+                <span class="occ-badge occ-medium">58%</span>
+              </li>
+              <li class="upcoming-item">
+                <div class="upc-date">
+                  <span class="upc-day">13</span>
+                  <span class="upc-mon">Jun</span>
+                </div>
+                <div class="upc-info">
+                  <p class="upc-name">Noite de Jazz com Maria João</p>
+                  <p class="upc-meta">38 lugares disponíveis · €15</p>
+                </div>
+                <span class="occ-badge occ-high">88%</span>
+              </li>
+              <li class="upcoming-item">
+                <div class="upc-date">
+                  <span class="upc-day">15</span>
+                  <span class="upc-mon">Jun</span>
+                </div>
+                <div class="upc-info">
+                  <p class="upc-name">La Traviata — Verdi</p>
+                  <p class="upc-meta">214 lugares disponíveis · €20–€30</p>
+                </div>
+                <span class="occ-badge occ-low">41%</span>
+              </li>
+              <li class="upcoming-item">
+                <div class="upc-date">
+                  <span class="upc-day">19</span>
+                  <span class="upc-mon">Jun</span>
+                </div>
+                <div class="upc-info">
+                  <p class="upc-name">Quarteto de Cordas Nº 14</p>
+                  <p class="upc-meta">72 lugares disponíveis · €10</p>
+                </div>
+                <span class="occ-badge occ-medium">64%</span>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Recent sales -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">Vendas recentes</h2>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Referência</th>
+                  <th>Cliente</th>
+                  <th>Evento</th>
+                  <th>Tipo</th>
+                  <th>Canal</th>
+                  <th>Data</th>
+                  <th>Total</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mono">CDM-2026-08471</td>
+                  <td>Ana Ferreira</td>
+                  <td>Orquestra Sinfónica</td>
+                  <td>Normal × 2</td>
+                  <td><span class="channel online">Online</span></td>
+                  <td>25 Mai 2026</td>
+                  <td>€40,00</td>
+                  <td><span class="status ok">Confirmado</span></td>
+                </tr>
+                <tr>
+                  <td class="mono">CDM-2026-08470</td>
+                  <td>Carlos Mota</td>
+                  <td>La Traviata</td>
+                  <td>Sénior × 1</td>
+                  <td><span class="channel presencial">Balcão</span></td>
+                  <td>24 Mai 2026</td>
+                  <td>€18,00</td>
+                  <td><span class="status ok">Confirmado</span></td>
+                </tr>
+                <tr>
+                  <td class="mono">CDM-2026-08469</td>
+                  <td>Sofia Gomes</td>
+                  <td>Festival Música Nova</td>
+                  <td>Jovem × 2</td>
+                  <td><span class="channel online">Online</span></td>
+                  <td>24 Mai 2026</td>
+                  <td>€16,00</td>
+                  <td><span class="status ok">Confirmado</span></td>
+                </tr>
+                <tr>
+                  <td class="mono">CDM-2026-08468</td>
+                  <td>Miguel Santos</td>
+                  <td>Jazz com Maria João</td>
+                  <td>Normal × 4</td>
+                  <td><span class="channel online">Online</span></td>
+                  <td>23 Mai 2026</td>
+                  <td>€60,00</td>
+                  <td><span class="status ok">Confirmado</span></td>
+                </tr>
+                <tr>
+                  <td class="mono">CDM-2026-08467</td>
+                  <td>Rita Alves</td>
+                  <td>Quarteto de Cordas</td>
+                  <td>Normal × 1</td>
+                  <td><span class="channel presencial">Balcão</span></td>
+                  <td>22 Mai 2026</td>
+                  <td>€10,00</td>
+                  <td><span class="status cancelled">Cancelado</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.bar-group').forEach(g => {
+      g.addEventListener('mouseenter', () => g.querySelector('.bar-tip').style.opacity = '1');
+      g.addEventListener('mouseleave', () => g.querySelector('.bar-tip').style.opacity = '0');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A minha conta — Casa da Música</title>
+  <link rel="stylesheet" href="conta.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Casa da Música</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Eventos</a>
+        <a href="conta.html" class="nav-link active">A minha conta</a>
+        <a href="login.html" class="btn btn-outline btn-sm">Sair</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-layout">
+
+      <!-- Sidebar menu -->
+      <nav class="side-menu">
+        <div class="user-card">
+          <div class="user-avatar">AF</div>
+          <div>
+            <p class="user-name">Ana Ferreira</p>
+            <p class="user-email">ana@exemplo.com</p>
+          </div>
+        </div>
+        <ul class="menu-list">
+          <li><a href="#bilhetes" class="menu-item active">&#127918; Os meus bilhetes</a></li>
+          <li><a href="#perfil"   class="menu-item">&#128100; Dados pessoais</a></li>
+          <li><a href="#seguranca" class="menu-item">&#128274; Segurança</a></li>
+          <li><a href="login.html" class="menu-item menu-item-danger">&#10005; Sair</a></li>
+        </ul>
+      </nav>
+
+      <!-- Content -->
+      <div class="content">
+
+        <!-- Tickets section -->
+        <section id="bilhetes" class="content-section">
+          <h2 class="section-title">Os meus bilhetes</h2>
+
+          <div class="filter-bar">
+            <button class="filter-btn active">Todos</button>
+            <button class="filter-btn">Futuros</button>
+            <button class="filter-btn">Passados</button>
+          </div>
+
+          <div class="tickets-list">
+
+            <!-- Upcoming ticket -->
+            <div class="ticket-row">
+              <div class="ticket-cover upcoming"></div>
+              <div class="ticket-info">
+                <div class="ticket-badges">
+                  <span class="badge badge-upcoming">Próximo evento</span>
+                  <span class="badge badge-type">Normal × 2</span>
+                </div>
+                <h3 class="ticket-event">Orquestra Sinfónica do Porto</h3>
+                <p class="ticket-meta">Sáb, 7 Jun 2026 · 21:00 · Sala Suggia</p>
+                <p class="ticket-ref">REF: CDM-2026-08471</p>
+              </div>
+              <div class="ticket-actions">
+                <span class="ticket-total">€40,00</span>
+                <a href="confirmacao.html" class="btn btn-primary btn-sm">Ver bilhete</a>
+                <a href="#" class="btn btn-ghost btn-sm">&#8659; PDF</a>
+              </div>
+            </div>
+
+            <!-- Past ticket 1 -->
+            <div class="ticket-row past">
+              <div class="ticket-cover past-cover-1"></div>
+              <div class="ticket-info">
+                <div class="ticket-badges">
+                  <span class="badge badge-past">Realizado</span>
+                  <span class="badge badge-type">Jovem × 1</span>
+                </div>
+                <h3 class="ticket-event">Noite de Jazz com Maria João</h3>
+                <p class="ticket-meta">Sex, 14 Mar 2026 · 22:00 · Grande Auditório</p>
+                <p class="ticket-ref">REF: CDM-2026-04221</p>
+              </div>
+              <div class="ticket-actions">
+                <span class="ticket-total">€12,00</span>
+                <a href="#" class="btn btn-outline btn-sm">Ver bilhete</a>
+                <a href="#" class="btn btn-ghost btn-sm">&#8659; PDF</a>
+              </div>
+            </div>
+
+            <!-- Past ticket 2 -->
+            <div class="ticket-row past">
+              <div class="ticket-cover past-cover-2"></div>
+              <div class="ticket-info">
+                <div class="ticket-badges">
+                  <span class="badge badge-past">Realizado</span>
+                  <span class="badge badge-type">Normal × 3</span>
+                </div>
+                <h3 class="ticket-event">Fado e Guitarra Portuguesa</h3>
+                <p class="ticket-meta">Sáb, 18 Jan 2026 · 21:00 · Sala Suggia</p>
+                <p class="ticket-ref">REF: CDM-2026-01108</p>
+              </div>
+              <div class="ticket-actions">
+                <span class="ticket-total">€42,00</span>
+                <a href="#" class="btn btn-outline btn-sm">Ver bilhete</a>
+                <a href="#" class="btn btn-ghost btn-sm">&#8659; PDF</a>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Profile section -->
+        <section id="perfil" class="content-section">
+          <h2 class="section-title">Dados pessoais</h2>
+          <form class="profile-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nome</label>
+                <input type="text" value="Ana" />
+              </div>
+              <div class="form-group">
+                <label>Apelido</label>
+                <input type="text" value="Ferreira" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" value="ana@exemplo.com" />
+              </div>
+              <div class="form-group">
+                <label>Telefone</label>
+                <input type="tel" value="+351 912 345 678" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Data de nascimento</label>
+                <input type="date" value="1998-03-14" />
+              </div>
+              <div class="form-group">
+                <label>NIF</label>
+                <input type="text" value="236781920" maxlength="9" />
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Guardar alterações</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Security section -->
+        <section id="seguranca" class="content-section">
+          <h2 class="section-title">Segurança</h2>
+          <form class="profile-form">
+            <div class="form-group">
+              <label>Palavra-passe atual</label>
+              <input type="password" placeholder="••••••••" />
+            </div>
+            <div class="form-group">
+              <label>Nova palavra-passe</label>
+              <input type="password" placeholder="Mínimo 8 caracteres" />
+            </div>
+            <div class="form-group">
+              <label>Confirmar nova palavra-passe</label>
+              <input type="password" placeholder="Repetir nova palavra-passe" />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Alterar palavra-passe</button>
+            </div>
+          </form>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Casa da Música. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

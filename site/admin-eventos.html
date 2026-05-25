@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestão de Eventos — Casa da Música</title>
+  <link rel="stylesheet" href="admin-eventos.css" />
+</head>
+<body>
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo">Casa da Música</span>
+        <span class="role-tag">Admin</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="admin-dashboard.html" class="nav-item">
+          <span class="nav-icon">&#9632;</span> Dashboard
+        </a>
+        <a href="admin-eventos.html" class="nav-item active">
+          <span class="nav-icon">&#127915;</span> Eventos
+        </a>
+        <a href="admin-utilizadores.html" class="nav-item">
+          <span class="nav-icon">&#128101;</span> Utilizadores
+        </a>
+        <a href="vendedor.html" class="nav-item">
+          <span class="nav-icon">&#128179;</span> Balcão
+        </a>
+        <a href="index.html" class="nav-item nav-item-muted">
+          <span class="nav-icon">&#10548;</span> Ver site
+        </a>
+        <a href="login.html" class="nav-item nav-item-danger">
+          <span class="nav-icon">&#10005;</span> Sair
+        </a>
+      </nav>
+    </aside>
+
+    <div class="page">
+      <header class="topbar">
+        <h1 class="page-title">Eventos</h1>
+        <div class="topbar-right">
+          <button class="btn btn-primary" onclick="openModal()">+ Novo Evento</button>
+          <div class="admin-avatar">PS</div>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <!-- Filters -->
+        <div class="filter-row">
+          <input class="search-input" type="text" placeholder="&#128269; Pesquisar eventos..." />
+          <select class="filter-select">
+            <option value="">Todas as categorias</option>
+            <option>Música Clássica</option>
+            <option>Jazz</option>
+            <option>Ópera</option>
+            <option>Música de Câmara</option>
+            <option>Música Contemporânea</option>
+            <option>World Music</option>
+          </select>
+          <select class="filter-select">
+            <option value="">Todos os estados</option>
+            <option>Publicado</option>
+            <option>Rascunho</option>
+            <option>Cancelado</option>
+          </select>
+        </div>
+
+        <!-- Events table -->
+        <div class="card">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Evento</th>
+                  <th>Data</th>
+                  <th>Sala</th>
+                  <th>Capacidade</th>
+                  <th>Vendidos</th>
+                  <th>Receita</th>
+                  <th>Estado</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="event-cell">
+                      <div class="event-thumb" style="background:#1e2a4a;"></div>
+                      <div>
+                        <p class="event-name">Orquestra Sinfónica do Porto</p>
+                        <p class="event-cat">Música Clássica</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>7 Jun 2026 · 21:00</td>
+                  <td>Sala Suggia</td>
+                  <td>340</td>
+                  <td>198 <span class="occ">(58%)</span></td>
+                  <td>€3.960</td>
+                  <td><span class="status published">Publicado</span></td>
+                  <td class="actions-cell">
+                    <button class="icon-btn" title="Editar" onclick="openModal()">&#9998;</button>
+                    <button class="icon-btn icon-btn-danger" title="Cancelar">&#10006;</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="event-cell">
+                      <div class="event-thumb" style="background:#2a1e4a;"></div>
+                      <div>
+                        <p class="event-name">Noite de Jazz com Maria João</p>
+                        <p class="event-cat">Jazz</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>13 Jun 2026 · 22:00</td>
+                  <td>Grande Auditório</td>
+                  <td>320</td>
+                  <td>282 <span class="occ">(88%)</span></td>
+                  <td>€4.230</td>
+                  <td><span class="status published">Publicado</span></td>
+                  <td class="actions-cell">
+                    <button class="icon-btn" title="Editar" onclick="openModal()">&#9998;</button>
+                    <button class="icon-btn icon-btn-danger" title="Cancelar">&#10006;</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="event-cell">
+                      <div class="event-thumb" style="background:#1e4a2a;"></div>
+                      <div>
+                        <p class="event-name">La Traviata — Verdi</p>
+                        <p class="event-cat">Ópera</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>15 Jun 2026 · 19:30</td>
+                  <td>Sala Suggia</td>
+                  <td>340</td>
+                  <td>126 <span class="occ">(37%)</span></td>
+                  <td>€2.520</td>
+                  <td><span class="status published">Publicado</span></td>
+                  <td class="actions-cell">
+                    <button class="icon-btn" title="Editar" onclick="openModal()">&#9998;</button>
+                    <button class="icon-btn icon-btn-danger" title="Cancelar">&#10006;</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="event-cell">
+                      <div class="event-thumb" style="background:#333;"></div>
+                      <div>
+                        <p class="event-name">Concerto Beneficência</p>
+                        <p class="event-cat">Música Clássica</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>30 Jun 2026 · 20:00</td>
+                  <td>Sala 2</td>
+                  <td>120</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="status draft">Rascunho</span></td>
+                  <td class="actions-cell">
+                    <button class="icon-btn" title="Editar" onclick="openModal()">&#9998;</button>
+                    <button class="icon-btn icon-btn-danger" title="Cancelar">&#10006;</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="event-cell">
+                      <div class="event-thumb" style="background:#2a1010;"></div>
+                      <div>
+                        <p class="event-name">Sinfonia do Adeus</p>
+                        <p class="event-cat">Música Clássica</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>10 Mai 2026 · 20:00</td>
+                  <td>Sala Suggia</td>
+                  <td>340</td>
+                  <td>— <span class="occ">(cancelado)</span></td>
+                  <td>—</td>
+                  <td><span class="status cancelled">Cancelado</span></td>
+                  <td class="actions-cell">
+                    <button class="icon-btn" disabled title="Não editável">&#9998;</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal: Create/Edit Event -->
+  <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">Novo Evento</h2>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <form class="modal-form" onsubmit="return false;">
+
+        <div class="form-group span-2">
+          <label>Nome do evento</label>
+          <input type="text" placeholder="Ex: Concerto de Primavera" />
+        </div>
+
+        <div class="form-group">
+          <label>Data</label>
+          <input type="date" />
+        </div>
+        <div class="form-group">
+          <label>Hora</label>
+          <input type="time" value="21:00" />
+        </div>
+
+        <div class="form-group">
+          <label>Sala</label>
+          <select>
+            <option>Sala Suggia</option>
+            <option>Grande Auditório</option>
+            <option>Sala 2</option>
+            <option>Pequeno Auditório</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Categoria</label>
+          <select>
+            <option>Música Clássica</option>
+            <option>Jazz</option>
+            <option>Ópera</option>
+            <option>Música de Câmara</option>
+            <option>Música Contemporânea</option>
+            <option>World Music</option>
+          </select>
+        </div>
+
+        <div class="form-group span-2">
+          <label>Descrição</label>
+          <textarea rows="3" placeholder="Descrição do evento..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Preço Normal (€)</label>
+          <input type="number" placeholder="20" min="0" step="0.5" />
+        </div>
+        <div class="form-group">
+          <label>Preço Jovem (€)</label>
+          <input type="number" placeholder="12" min="0" step="0.5" />
+        </div>
+        <div class="form-group">
+          <label>Preço Sénior (€)</label>
+          <input type="number" placeholder="14" min="0" step="0.5" />
+        </div>
+        <div class="form-group">
+          <label>Classificação etária</label>
+          <select>
+            <option>Livre</option>
+            <option>Maiores de 6 anos</option>
+            <option>Maiores de 12 anos</option>
+            <option>Maiores de 16 anos</option>
+            <option>Maiores de 18 anos</option>
+          </select>
+        </div>
+
+        <div class="form-group span-2">
+          <label>Estado</label>
+          <select>
+            <option>Rascunho</option>
+            <option>Publicado</option>
+          </select>
+        </div>
+
+        <div class="modal-footer span-2">
+          <button type="button" class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar evento</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('modal').classList.add('visible');
+    }
+    function closeModal(e) {
+      if (!e || e.target === document.getElementById('modal')) {
+        document.getElementById('modal').classList.remove('visible');
+      }
+    }
+  </script>
+</body>
+</html>

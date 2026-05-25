@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compra Confirmada — Casa da Música</title>
+  <link rel="stylesheet" href="confirmacao.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Casa da Música</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Eventos</a>
+        <a href="conta.html" class="nav-link">A minha conta</a>
+        <a href="login.html" class="btn btn-outline">Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="confirm-container">
+
+      <div class="success-icon">&#10003;</div>
+      <h1 class="confirm-title">Compra Confirmada!</h1>
+      <p class="confirm-sub">
+        O seu bilhete foi enviado para <strong>ana@exemplo.com</strong>.<br />
+        Verifique a sua caixa de entrada (e a pasta de spam, por precaução).
+      </p>
+
+      <!-- Ticket -->
+      <div class="ticket-card">
+        <div class="ticket-left">
+          <div class="ticket-cover"></div>
+        </div>
+        <div class="ticket-body">
+          <div class="ticket-header">
+            <span class="ticket-cat">Música Clássica</span>
+            <span class="ticket-ref">REF: CDM-2026-08471</span>
+          </div>
+          <h2 class="ticket-title">Orquestra Sinfónica do Porto</h2>
+          <div class="ticket-details">
+            <div class="td-item">
+              <span class="td-label">Data</span>
+              <span class="td-value">Sábado, 7 de junho de 2026</span>
+            </div>
+            <div class="td-item">
+              <span class="td-label">Hora</span>
+              <span class="td-value">21:00</span>
+            </div>
+            <div class="td-item">
+              <span class="td-label">Local</span>
+              <span class="td-value">Sala Suggia, Casa da Música</span>
+            </div>
+            <div class="td-item">
+              <span class="td-label">Tipo</span>
+              <span class="td-value">Normal × 2</span>
+            </div>
+            <div class="td-item">
+              <span class="td-label">Total pago</span>
+              <span class="td-value price">€40,00</span>
+            </div>
+          </div>
+        </div>
+        <div class="ticket-qr">
+          <div class="qr-placeholder">
+            <div class="qr-grid"></div>
+          </div>
+          <p class="qr-label">QR Code</p>
+          <p class="qr-ref">CDM-2026-08471</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a href="#" class="btn btn-primary">&#8659; Descarregar PDF</a>
+        <a href="conta.html" class="btn btn-outline">Ver os meus bilhetes</a>
+        <a href="index.html" class="btn btn-outline">Explorar mais eventos</a>
+      </div>
+
+      <div class="info-box">
+        <h3>Informações importantes</h3>
+        <ul>
+          <li>Apresente o bilhete digital (PDF ou ecrã) na entrada do recinto.</li>
+          <li>O QR code será verificado por leitores óticos — garanta boa luminosidade.</li>
+          <li>As portas abrem 30 minutos antes do início do espetáculo.</li>
+          <li>Bilhetes Jovem e Sénior requerem documento identificativo válido.</li>
+          <li>Não são feitas devoluções ou trocas após a compra, salvo cancelamento do evento.</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Casa da Música. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
