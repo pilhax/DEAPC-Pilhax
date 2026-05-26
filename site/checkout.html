@@ -29,7 +29,7 @@
 
     <div class="checkout-layout">
       <!-- Steps + Form -->
-      <div class="checkout-left">
+      <form class="checkout-left" id="form-checkout" action="../scripts/comprar_bilhete.php" method="POST">
 
         <!-- Progress -->
         <div class="steps">
@@ -104,28 +104,26 @@
         <!-- Step 2: Personal data -->
         <section class="form-section">
           <h2 class="form-section-title">Dados Pessoais</h2>
-          <form class="personal-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="nome">Nome completo</label>
-                <input type="text" id="nome" placeholder="Ana Ferreira" />
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="ana@exemplo.com" />
-              </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Ana Ferreira" required />
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" placeholder="+351 912 345 678" />
-              </div>
-              <div class="form-group">
-                <label for="nif">NIF (opcional)</label>
-                <input type="text" id="nif" placeholder="123456789" maxlength="9" />
-              </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="ana@exemplo.com" required />
             </div>
-          </form>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="+351 912 345 678" />
+            </div>
+            <div class="form-group">
+              <label for="nif">NIF (opcional)</label>
+              <input type="text" id="nif" name="nif" placeholder="123456789" maxlength="9" />
+            </div>
+          </div>
         </section>
 
         <!-- Step 3: Payment -->
@@ -133,17 +131,17 @@
           <h2 class="form-section-title">Pagamento</h2>
           <div class="payment-methods">
             <label class="payment-opt selected">
-              <input type="radio" name="payment" value="card" checked />
+              <input type="radio" name="pagamento" value="cartao" checked />
               <span class="payment-icon">&#128179;</span>
               <span>Cartão de Crédito / Débito</span>
             </label>
             <label class="payment-opt">
-              <input type="radio" name="payment" value="mbway" />
+              <input type="radio" name="pagamento" value="mbway" />
               <span class="payment-icon">&#128247;</span>
               <span>MB WAY</span>
             </label>
             <label class="payment-opt">
-              <input type="radio" name="payment" value="multibanco" />
+              <input type="radio" name="pagamento" value="multibanco" />
               <span class="payment-icon">&#127974;</span>
               <span>Multibanco</span>
             </label>
@@ -171,8 +169,13 @@
           </div>
         </section>
 
-        <a href="confirmacao.html" class="btn btn-primary btn-full btn-lg">Confirmar e Pagar</a>
-      </div>
+        <input type="hidden" name="evento_id"  id="hid-evento"  value="" />
+        <input type="hidden" name="qty_normal" id="hid-normal"  value="0" />
+        <input type="hidden" name="qty_jovem"  id="hid-jovem"   value="0" />
+        <input type="hidden" name="qty_senior" id="hid-senior"  value="0" />
+        <input type="hidden" name="csrf_token" id="hid-csrf"    value="" />
+        <button type="submit" class="btn btn-primary btn-full btn-lg">Confirmar e Pagar</button>
+      </form>
 
       <!-- Order Summary -->
       <aside class="checkout-sidebar">
@@ -208,13 +211,42 @@
   </footer>
 
   <script>
-    const prices = { normal: 20, jovem: 12, senior: 14 };
+    // Ler evento da URL e carregar preços reais da BD
+    const params  = new URLSearchParams(window.location.search);
+    const eventoId = params.get('id') || 1;
+    let prices = { normal: 20, jovem: 12, senior: 14 };
     const labels = { normal: 'Normal', jovem: 'Jovem', senior: 'Sénior' };
     const qtys = { normal: 0, jovem: 0, senior: 0 };
 
+    document.getElementById('hid-evento').value = eventoId;
+
+    // Carregar preços do evento via API
+    fetch('../scripts/detalhe_evento.php?id=' + eventoId)
+      .then(r => r.json())
+      .then(res => {
+        if (!res.sucesso) return;
+        const ev = res.dados;
+        // Atualizar resumo lateral com dados reais
+        document.querySelector('.summary-event-name').textContent = ev.nome;
+        document.querySelector('.summary-event-date').textContent =
+          new Date(ev.data).toLocaleDateString('pt-PT', {weekday:'short', day:'numeric', month:'short', year:'numeric'})
+          + ' · ' + ev.hora;
+        document.querySelector('.summary-event-local').textContent = ev.sala + ', Porto';
+        // Atualizar preços
+        ev.precos.forEach(p => { prices[p.tipo] = parseFloat(p.preco); });
+        // Atualizar etiquetas de preço nos botões
+        document.querySelector('#step-tickets .ticket-option:nth-child(1) .ticket-price').textContent = '€' + prices.normal.toFixed(2).replace('.',',');
+        document.querySelector('#step-tickets .ticket-option:nth-child(2) .ticket-price').textContent = '€' + prices.jovem.toFixed(2).replace('.',',');
+        document.querySelector('#step-tickets .ticket-option:nth-child(3) .ticket-price').textContent = '€' + prices.senior.toFixed(2).replace('.',',');
+      })
+      .catch(() => {});
+
+    // Token CSRF via cookie de sessão (PHP injetará via meta tag em produção)
+    // Para agora deixamos vazio — o servidor valida com sessão iniciada
     function changeQty(type, delta) {
       qtys[type] = Math.max(0, qtys[type] + delta);
       document.getElementById('qty-' + type).textContent = qtys[type];
+      document.getElementById('hid-' + type).value = qtys[type];
       updateSummary();
     }
 
@@ -233,6 +265,15 @@
       lines.innerHTML = html || '<p class="summary-empty">Ainda não selecionou bilhetes.</p>';
       totalEl.textContent = '€' + total.toFixed(2).replace('.', ',');
     }
+
+    // Antes de submeter, copiar valores hidden
+    document.getElementById('form-checkout').addEventListener('submit', function(e) {
+      const total = Object.entries(qtys).reduce((s,[t,q]) => s + q * prices[t], 0);
+      if (total === 0) {
+        e.preventDefault();
+        alert('Selecione pelo menos um bilhete.');
+      }
+    });
   </script>
 </body>
 </html>

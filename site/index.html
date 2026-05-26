@@ -136,5 +136,56 @@
   <footer class="footer">
     <p>&copy; 2026 Casa da Música. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    const CORES = ['#1e2a4a','#2a1e4a','#1e4a2a','#4a2a1e','#3a1e4a','#1e4a3a'];
+
+    function renderEventos(lista) {
+      const grid = document.querySelector('.events-grid');
+      if (!lista.length) {
+        grid.innerHTML = '<p style="color:var(--muted);grid-column:1/-1">Nenhum evento encontrado.</p>';
+        return;
+      }
+      grid.innerHTML = lista.map((ev, i) => {
+        const cor  = CORES[i % CORES.length];
+        const data = new Date(ev.data);
+        const dataFmt = data.toLocaleDateString('pt-PT', {weekday:'short', day:'numeric', month:'short', year:'numeric'});
+        const preco = ev.preco_jovem ?? ev.preco_normal ?? '—';
+        return `
+          <article class="event-card">
+            <div class="event-img" style="background-color:${cor};"></div>
+            <div class="event-body">
+              <span class="event-category">${ev.categoria}</span>
+              <h3 class="event-title">${ev.nome}</h3>
+              <p class="event-meta">
+                <span class="event-date">${dataFmt}</span>
+                <span class="event-time">${ev.hora.slice(0,5)}</span>
+              </p>
+              <p class="event-price">A partir de <strong>€${parseFloat(preco).toFixed(0)}</strong></p>
+              <a href="evento.html?id=${ev.id}" class="btn btn-primary btn-sm">Ver detalhes</a>
+            </div>
+          </article>`;
+      }).join('');
+    }
+
+    function carregarEventos(params = {}) {
+      const qs = new URLSearchParams(params).toString();
+      fetch('../scripts/listar_eventos.php' + (qs ? '?' + qs : ''))
+        .then(r => r.json())
+        .then(res => { if (res.sucesso) renderEventos(res.dados); })
+        .catch(() => {});
+    }
+
+    document.querySelector('.search-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const pesquisa  = this.querySelector('.search-input').value;
+      const categoria = this.querySelector('.search-select').value;
+      const data      = this.querySelector('.search-date').value;
+      carregarEventos({ pesquisa, categoria, data });
+    });
+
+    // Carregar ao iniciar
+    carregarEventos();
+  </script>
 </body>
 </html>

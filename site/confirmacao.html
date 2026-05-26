@@ -94,5 +94,38 @@
   <footer class="footer">
     <p>&copy; 2026 Casa da Música. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    const ref = new URLSearchParams(window.location.search).get('ref');
+    if (ref) {
+      fetch('../scripts/bilhete.php?ref=' + encodeURIComponent(ref))
+        .then(r => r.json())
+        .then(res => {
+          if (!res.sucesso) return;
+          const c = res.dados;
+          // Actualizar referência
+          document.querySelector('.ticket-ref').textContent = 'REF: ' + c.referencia;
+          document.querySelector('.qr-ref').textContent = c.referencia;
+          // Detalhes
+          document.querySelector('.confirm-sub').innerHTML =
+            `O seu bilhete foi enviado para <strong>${c.email_cliente}</strong>.<br />
+             Verifique a sua caixa de entrada (e a pasta de spam, por precaução).`;
+          document.querySelector('.ticket-title').textContent = c.evento_nome;
+          // Preencher td-items
+          const rows = document.querySelectorAll('.td-item');
+          if (rows[0]) rows[0].querySelector('.td-value').textContent =
+            new Date(c.evento_data).toLocaleDateString('pt-PT', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+          if (rows[1]) rows[1].querySelector('.td-value').textContent = c.evento_hora;
+          if (rows[2]) rows[2].querySelector('.td-value').textContent = c.evento_sala;
+          if (rows[3]) rows[3].querySelector('.td-value').textContent =
+            (c.itens || []).map(i => i.tipo[0].toUpperCase() + i.tipo.slice(1) + ' × ' + i.quantidade).join(', ');
+          if (rows[4]) rows[4].querySelector('.td-value').textContent =
+            '€' + parseFloat(c.total).toFixed(2).replace('.', ',');
+          // Link PDF (simulado)
+          document.querySelector('.actions a[href="#"]').href = '../scripts/bilhete.php?ref=' + encodeURIComponent(ref) + '&formato=pdf';
+        })
+        .catch(() => {});
+    }
+  </script>
 </body>
 </html>
